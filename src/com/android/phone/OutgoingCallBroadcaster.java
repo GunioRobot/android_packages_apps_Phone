@@ -72,7 +72,7 @@ public class OutgoingCallBroadcaster extends Activity {
                 intent.setAction(Intent.ACTION_CALL);
             }
         }
-        
+
         /* Change CALL_PRIVILEGED into CALL or CALL_EMERGENCY as needed. */
         if (Intent.ACTION_CALL_PRIVILEGED.equals(action)) {
             action = emergencyNumber
@@ -113,7 +113,7 @@ public class OutgoingCallBroadcaster extends Activity {
         // broadcast; technically we should be holding a wake lock here
         // as well.
         PhoneApp.getInstance().wakeUpScreen();
-        
+
         /* If number is null, we're probably trying to call a non-existent voicemail number or
          * something else fishy.  Whatever the problem, there's no number, so there's no point
          * in allowing apps to modify the number. */

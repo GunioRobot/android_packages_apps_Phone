@@ -246,7 +246,7 @@ public class IccPinUnlockPanel extends IccPanel {
 
         // store the ICC pin in memory, to be used later for keyguard lock
         // and radio reboots.
-        PhoneApp.getInstance().setCachedSimPin(mEntry.getText().toString()); 
+        PhoneApp.getInstance().setCachedSimPin(mEntry.getText().toString());
     }
 
     void handleFailure() {

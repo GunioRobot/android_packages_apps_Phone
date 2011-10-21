@@ -38,7 +38,7 @@ import java.util.HashMap;
 public class BluetoothAtPhonebook {
     private static final String TAG = "BtAtPhonebook";
     private static final boolean DBG = false;
-    
+
     /** The projection to use when querying the call log database in response
      *  to AT+CPBR for the MC, RC, and DC phone books (missed, received, and
      *   dialed calls respectively)
@@ -112,7 +112,7 @@ public class BluetoothAtPhonebook {
         cursor.close();
         return number;
     }
-    
+
     public void register(AtParser parser) {
         // Select Character Set
         // Always send UTF-8, but pretend to support IRA and GSM for compatability
@@ -149,7 +149,7 @@ public class BluetoothAtPhonebook {
                 if ("SM".equals(mCurrentPhonebook)) {
                     return new AtCommandResult("+CPBS: \"SM\",0," + MAX_PHONEBOOK_SIZE);
                 }
-                    
+
                 PhonebookResult pbr = getPhonebookResult(mCurrentPhonebook, true);
                 if (pbr == null) {
                     return mHandsfree.reportCmeError(BluetoothCmeError.OPERATION_NOT_ALLOWED);

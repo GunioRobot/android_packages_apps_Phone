@@ -28,12 +28,12 @@ oneway interface INetworkQueryServiceCallback {
     /**
      * Called upon query completion, handing a status value and an
      * array of NetworkInfo objects.
-     *  
-     * @param networkInfoArray is the list of NetworkInfo. Can be 
-     * null, indicating no results were found, or an error.  
-     * @param status the status indicating if there were any 
-     * problems with the request.   
+     *
+     * @param networkInfoArray is the list of NetworkInfo. Can be
+     * null, indicating no results were found, or an error.
+     * @param status the status indicating if there were any
+     * problems with the request.
      */
     void onQueryComplete(in List<NetworkInfo> networkInfoArray, int status);
-    
+
 }

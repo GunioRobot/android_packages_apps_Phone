@@ -71,7 +71,7 @@ public class FakePhoneActivity extends Activity {
                         Toast.LENGTH_SHORT).show();
                 return;
             }
-            
+
             mRadioControl.triggerRing(mPhoneNumber.getText().toString());
         }
     }

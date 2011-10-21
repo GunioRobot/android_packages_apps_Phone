@@ -159,7 +159,7 @@ public class PhoneUtils {
             }
         }
     }
-    
+
 
     private static ServiceConnection ExtendedNetworkServiceConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName name, IBinder iBinder) {
@@ -170,7 +170,7 @@ public class PhoneUtils {
         public void onServiceDisconnected(ComponentName arg0) {
             if (DBG) log("Extended NW onServiceDisconnected");
             mNwService = null;
-        }    
+        }
     };
 
     /**
@@ -184,7 +184,7 @@ public class PhoneUtils {
         phone.registerForPhoneStateChanged(mConnectionHandler, PHONE_STATE_CHANGED, phone);
         // Extended NW service
         Intent intent = new Intent("com.android.ussd.IExtendedNetworkService");
-        phone.getContext().bindService(intent, 
+        phone.getContext().bindService(intent,
                 ExtendedNetworkServiceConnection, Context.BIND_AUTO_CREATE);
         if (DBG) log("Extended NW bindService IExtendedNetworkService");
 
@@ -380,7 +380,7 @@ static Connection getConnection(Phone phone, Call call) {
             // Presently, null is returned for MMI codes
             if (cn == null) {
                 if (DBG) log("dialed MMI code: " + number);
-                status = CALL_STATUS_DIALED_MMI;   
+                status = CALL_STATUS_DIALED_MMI;
                 // Set dialed MMI command to service
                 if (mNwService != null) {
                     try {
@@ -570,10 +570,10 @@ static Connection getConnection(Phone phone, Call call) {
             CharSequence textmsg = "";
             try {
                 textmsg = mNwService.getMmiRunningText();
-                
+
             } catch (RemoteException e) {
                 mNwService = null;
-                textmsg = context.getText(R.string.ussdRunning);            
+                textmsg = context.getText(R.string.ussdRunning);
             }
             if (DBG) log("Extended NW displayMMIInitiate (" + textmsg+ ")");
             pd.setMessage(textmsg);
@@ -589,7 +589,7 @@ static Connection getConnection(Phone phone, Call call) {
             } catch(NullPointerException e) {
                 mMmiTimeoutCbMsg = null;
             }
-            return pd;              
+            return pd;
         }
 
         boolean isCancelable = (mmiCode != null) && mmiCode.isCancelable();
@@ -860,7 +860,7 @@ static Connection getConnection(Phone phone, Call call) {
                 mNwService.clearMmiString();
             } catch (RemoteException e) {
                 mNwService = null;
-            }            
+            }
         }
         if (mMmiTimeoutCbMsg != null) {
             mMmiTimeoutCbMsg = null;
@@ -1460,7 +1460,7 @@ static Connection getConnection(Phone phone, Call call) {
         }
 
         if (!ignore) {
-            AudioManager audioManager = 
+            AudioManager audioManager =
                     (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
             // Enable stack dump only when actively debugging ("new Throwable()" is expensive!)
             if (DBG_SETAUDIOMODE_STACK) Log.d(LOG_TAG, "Stack:", new Throwable("stack dump"));

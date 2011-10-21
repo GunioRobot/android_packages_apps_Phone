@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 package com.android.phone;
 
 import com.android.phone.INetworkQueryServiceCallback;
- 
+
 /**
  * Service interface to handle queries for available networks.  The
- * Phone application lets this service interface handle carrier 
- * availability queries instead of making direct calls to the 
+ * Phone application lets this service interface handle carrier
+ * availability queries instead of making direct calls to the
  * GSMPhone layer.
  */
 oneway interface INetworkQueryService {
- 
+
     /**
      * Starts a network query if it has not been started yet, and
      * request a callback through the INetworkQueryServiceCallback
@@ -34,10 +34,10 @@ oneway interface INetworkQueryService {
      * that will be sent upon query completion.
      */
     void startNetworkQuery(in INetworkQueryServiceCallback cb);
- 
+
     /**
      * Tells the service that the requested query is to be ignored.
-     * This may not do anything for the Query request in the 
+     * This may not do anything for the Query request in the
      * underlying RIL, but it ensures that the callback is removed
      * from the list of notifications.
      */

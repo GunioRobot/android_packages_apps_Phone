@@ -70,7 +70,7 @@ public class Ringer {
     /**
      * After a radio technology change, e.g. from CDMA to GSM or vice versa,
      * the Context of the Ringer has to be updated. This is done by that function.
-     * 
+     *
      * @parameter Phone, the new active phone for the appropriate radio
      * technology
      */
@@ -226,7 +226,7 @@ public class Ringer {
     private class Worker implements Runnable {
         private final Object mLock = new Object();
         private Looper mLooper;
-        
+
         Worker(String name) {
             Thread t = new Thread(null, this, name);
             t.start();
@@ -239,11 +239,11 @@ public class Ringer {
                 }
             }
         }
-        
+
         public Looper getLooper() {
             return mLooper;
         }
-        
+
         public void run() {
             synchronized (mLock) {
                 Looper.prepare();
@@ -252,7 +252,7 @@ public class Ringer {
             }
             Looper.loop();
         }
-        
+
         public void quit() {
             mLooper.quit();
         }

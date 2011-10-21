@@ -200,7 +200,7 @@ View.OnLongClickListener, View.OnKeyListener, TextWatcher {
     protected void onRestoreInstanceState(Bundle icicle) {
         mLastNumber = icicle.getString(LAST_NUMBER);
     }
-    
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -510,7 +510,7 @@ View.OnLongClickListener, View.OnKeyListener, TextWatcher {
             return getText(R.string.dial_emergency_empty_error).toString();
         }
     }
-    
+
     @Override
     protected Dialog onCreateDialog(int id) {
         AlertDialog dialog = null;
@@ -527,7 +527,7 @@ View.OnLongClickListener, View.OnKeyListener, TextWatcher {
         }
         return dialog;
     }
-    
+
     @Override
     protected void onPrepareDialog(int id, Dialog dialog) {
         super.onPrepareDialog(id, dialog);

@@ -64,7 +64,7 @@ public class ProcessOutgoingCallTest extends BroadcastReceiver {
             }
 
             /* Example of how to deny calls to a particular number.
-             * Note that no UI is displayed to the user -- the call simply 
+             * Note that no UI is displayed to the user -- the call simply
              * does not happen.  It is the application's responaibility to
              * explain this to the user. */
             int length = number.length();

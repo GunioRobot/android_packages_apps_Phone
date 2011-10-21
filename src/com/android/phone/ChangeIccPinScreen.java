@@ -47,12 +47,12 @@ public class ChangeIccPinScreen extends Activity {
     private static final boolean DBG = false;
 
     private static final int EVENT_PIN_CHANGED = 100;
-    
+
     private enum EntryState {
         ES_PIN,
         ES_PUK
     }
-    
+
     private EntryState mState;
 
     private static final int NO_ERROR = 0;
@@ -120,12 +120,12 @@ public class ChangeIccPinScreen extends Activity {
         mButton.setOnClickListener(mClicked);
 
         mScrollView = (ScrollView) findViewById(R.id.scroll);
-        
+
         mPUKCode = (EditText) findViewById(R.id.puk_code);
         mPUKCode.setKeyListener(DigitsKeyListener.getInstance());
         mPUKCode.setMovementMethod(null);
         mPUKCode.setOnClickListener(mClicked);
-        
+
         mPUKSubmit = (Button) findViewById(R.id.puk_submit);
         mPUKSubmit.setOnClickListener(mClicked);
 
@@ -133,7 +133,7 @@ public class ChangeIccPinScreen extends Activity {
 
         int id = mChangePin2 ? R.string.change_pin2 : R.string.change_pin;
         setTitle(getResources().getText(id));
-        
+
         mState = EntryState.ES_PIN;
     }
 
@@ -225,8 +225,8 @@ public class ChangeIccPinScreen extends Activity {
             } else if (v == mPUKCode) {
                 mPUKSubmit.requestFocus();
             } else if (v == mPUKSubmit) {
-                mPhone.getIccCard().supplyPuk2(mPUKCode.getText().toString(), 
-                        mNewPin1.getText().toString(), 
+                mPhone.getIccCard().supplyPuk2(mPUKCode.getText().toString(),
+                        mNewPin1.getText().toString(),
                         Message.obtain(mHandler, EVENT_PIN_CHANGED));
             }
         }
@@ -239,7 +239,7 @@ public class ChangeIccPinScreen extends Activity {
             if (mState == EntryState.ES_PUK) {
                 mScrollView.setVisibility(View.VISIBLE);
                 mIccPUKPanel.setVisibility(View.GONE);
-            }            
+            }
             // TODO: show success feedback
             showConfirmation();
 
@@ -274,7 +274,7 @@ public class ChangeIccPinScreen extends Activity {
             }
         }
     }
-    
+
     private AlertDialog mPUKAlert;
     private void displayPUKAlert () {
         if (mPUKAlert == null) {

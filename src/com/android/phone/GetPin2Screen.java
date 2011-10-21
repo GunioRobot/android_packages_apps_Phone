@@ -44,7 +44,7 @@ public class GetPin2Screen extends Activity {
 
     /**
      * Reflect the changes in the layout that force the user to open
-     * the keyboard. 
+     * the keyboard.
      */
     private void setupView() {
         mPin2Field = (EditText) findViewById(R.id.pin);

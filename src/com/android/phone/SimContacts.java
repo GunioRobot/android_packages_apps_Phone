@@ -51,7 +51,7 @@ public class SimContacts extends ADNList {
     private static final int MENU_IMPORT_ALL = 2;
     private ProgressDialog mProgressDialog;
 
-    
+
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -60,17 +60,17 @@ public class SimContacts extends ADNList {
 
     private class ImportAllThread extends Thread implements OnCancelListener, OnClickListener {
         boolean mCanceled = false;
-        
+
         public ImportAllThread() {
             super("ImportAllThread");
         }
-        
+
         @Override
         public void run() {
             ContentValues map = new ContentValues();
             ContentResolver cr = getContentResolver();
             Object[] parsed = new Object[2];
-            
+
             mCursor.moveToPosition(-1);
             while (!mCanceled && mCursor.moveToNext()) {
                 String name = mCursor.getString(0);
@@ -94,7 +94,7 @@ public class SimContacts extends ADNList {
                 Uri numberUrl = cr.insert(
                         Uri.withAppendedPath(personUrl, Contacts.People.Phones.CONTENT_DIRECTORY),
                         map);
-                
+
                 mProgressDialog.incrementProgressBy(1);
                 if (numberUrl == null) {
                     Log.e(TAG, "Error inserting phone " + map + " for person " +
@@ -102,7 +102,7 @@ public class SimContacts extends ADNList {
                     continue;
                 }
             }
-            
+
             mProgressDialog.dismiss();
 
             finish();
@@ -147,7 +147,7 @@ public class SimContacts extends ADNList {
         switch (item.getItemId()) {
             case MENU_IMPORT_ALL:
                 CharSequence title = getString(R.string.importAllSimEntries);
-                CharSequence message = getString(R.string.importingSimContacts); 
+                CharSequence message = getString(R.string.importingSimContacts);
 
                 ImportAllThread thread = new ImportAllThread();
 
@@ -159,14 +159,14 @@ public class SimContacts extends ADNList {
                 mProgressDialog.setProgress(0);
                 mProgressDialog.setMax(mCursor.getCount());
                 mProgressDialog.show();
-                
+
                 thread.start();
-                
+
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
-    
+
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -181,7 +181,7 @@ public class SimContacts extends ADNList {
         return super.onContextItemSelected(item);
     }
 
-    
+
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenu.ContextMenuInfo menuInfo) {
         if (menuInfo instanceof AdapterView.AdapterContextMenuInfo) {

@@ -24,7 +24,7 @@ import android.view.ViewGroup;
 public class ButtonGridLayout extends ViewGroup {
 
     private final int mColumns = 3;
-    
+
     public ButtonGridLayout(Context context) {
         super(context);
     }
@@ -36,7 +36,7 @@ public class ButtonGridLayout extends ViewGroup {
     public ButtonGridLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
-    
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int y = mPaddingTop;
@@ -48,7 +48,7 @@ public class ButtonGridLayout extends ViewGroup {
         final int childHeight = child0.getMeasuredHeight();
         final int xOffset = (xInc - childWidth) / 2;
         final int yOffset = (yInc - childHeight) / 2;
-        
+
         for (int row = 0; row < rows; row++) {
             int x = mPaddingLeft;
             for (int col = 0; col < mColumns; col++) {
@@ -57,8 +57,8 @@ public class ButtonGridLayout extends ViewGroup {
                     break;
                 }
                 View child = getChildAt(cell);
-                child.layout(x + xOffset, y + yOffset, 
-                        x + xOffset + childWidth, 
+                child.layout(x + xOffset, y + yOffset,
+                        x + xOffset + childWidth,
                         y + yOffset + childHeight);
                 x += xInc;
             }
@@ -67,14 +67,14 @@ public class ButtonGridLayout extends ViewGroup {
     }
 
     private int getRows() {
-        return (getChildCount() + mColumns - 1) / mColumns; 
+        return (getChildCount() + mColumns - 1) / mColumns;
     }
-    
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int width = mPaddingLeft + mPaddingRight;
         int height = mPaddingTop + mPaddingBottom;
-        
+
         // Measure the first child and get it's size
         View child = getChildAt(0);
         child.measure(MeasureSpec.UNSPECIFIED , MeasureSpec.UNSPECIFIED);
@@ -87,7 +87,7 @@ public class ButtonGridLayout extends ViewGroup {
         // All cells are going to be the size of the first child
         width += mColumns * childWidth;
         height += getRows() * childHeight;
-        
+
         width = resolveSize(width, widthMeasureSpec);
         height = resolveSize(height, heightMeasureSpec);
         setMeasuredDimension(width, height);

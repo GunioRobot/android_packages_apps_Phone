@@ -37,7 +37,7 @@ public class DialtactsActivity extends TabActivity {
     private static final int FAVORITES_STARRED = 1;
     private static final int FAVORITES_FREQUENT = 2;
     private static final int FAVORITES_STREQUENT = 3;
-    
+
     /** Defines what is displayed in the right tab */
     private static final int FAVORITES_TAB_MODE = FAVORITES_STARRED;
 
@@ -80,7 +80,7 @@ public class DialtactsActivity extends TabActivity {
             setIntent(intent);
         }
     }
-    
+
     private void setupCallLogTab() {
         mTabHost.addTab(mTabHost.newTabSpec("call_log")
                 .setIndicator(getString(R.string.recentCallsIconLabel),
@@ -129,10 +129,10 @@ public class DialtactsActivity extends TabActivity {
 
     /**
      * Returns true if the intent is due to hitting the green send key while in a call.
-     * 
+     *
      * @param intent the intent that launched this activity
      * @param recentCallsRequest true if the intent is requesting to view recent calls
-     * @return true if the intent is due to hitting the green send key while in a call 
+     * @return true if the intent is due to hitting the green send key while in a call
      */
     private boolean isSendKeyWhileInCall(final Intent intent, final boolean recentCallsRequest) {
         // If there is a call in progress go to the call screen
@@ -145,13 +145,13 @@ public class DialtactsActivity extends TabActivity {
                 return true;
             }
         }
-        
+
         return false;
     }
 
     /**
      * Sets the current tab based on the intent's request type
-     * 
+     *
      * @param recentCallsRequest true is the recent calls tab is desired, false oltherwise
      */
     private void setCurrentTab(Intent intent) {
@@ -191,7 +191,7 @@ public class DialtactsActivity extends TabActivity {
             moveTaskToBack(false);
             return true;
         }
-        
+
         return super.onKeyDown(keyCode, event);
     }
 }
